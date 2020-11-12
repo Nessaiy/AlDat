@@ -18,7 +18,8 @@ public class Vergleich
 			A[i] = (int) (Math.random()*100);
 		}
 		
-		int[] B = A;
+		int[] B = A.clone(); //erschafft eine Kopie von A
+
 		//Ausgabe des unsortiertem Array
 		for (int i=0;i<n;i++)
 		{
@@ -104,7 +105,7 @@ public class Vergleich
 		}
 	}
 
-	public static void Bubble_Sort(int[] A, int n)
+	public static void Bubble_Sort(int[] B, int n)
 	{
 		boolean getauscht = false;
 
@@ -114,14 +115,13 @@ public class Vergleich
 			{
 				getauscht = false;
 				b_vergleich++;
-				if (A[i]>A[i+1])
+				if (B[i]>B[i+1])
 				{
-					vertausche(A,i,i+1);
+					vertausche(B,i,i+1);
 					b_tauschen++;
 					getauscht = true;
 				}
 			}
 		} while (getauscht);
 	}
-
 }
