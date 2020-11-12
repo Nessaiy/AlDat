@@ -9,47 +9,60 @@ public class Vergleich
 
 	public static void main(String[] args)
 	{
-		//Definiere Array mit 5 Stellen
-		int n = 5;
+		//Definiere Array mit n Stellen
+		int n = 10;
 		int[] A  = new int[n];
 
+		//für ein n langes Array mit Zufallszahlen 0-100
+		
+		// // * aendern um schon sortiertes Array zu nehmen
 		for (int i = 0; i<n ; i++)
 		{
 			A[i] = (int) (Math.random()*100);
 		}
-		
-		int[] B = A.clone(); //erschafft eine Kopie von A
+		// // * aendern um schon sortiertes Array zu nehmen
+
+		//Festes Array um sortiertes Anzugeben
+		/* // * aendern um schon sortiertes Array zu nehmen
+		A[0] = 1;
+		A[1] = 2;
+		A[2] = 3;
+		A[3] = 4;
+		A[4] = 5;
+		*/ // * aendern um schon sortiertes Array zu nehmen
+
+		int[] B = A.clone(); //erschafft eine Kopie von A an anderem Speicherplatz
 
 		//Ausgabe des unsortiertem Array
+		System.out.println("Unsortiertes Array:");
 		for (int i=0;i<n;i++)
 		{
 			System.out.print(A[i] + " ");
 		}
 
 		System.out.println();
-		System.out.println("Sortiert:"); //Ab jetzt sortiert:
-
-
+		
 		Vergleich.Quick_Sort(A,0,n-1); // Quick_Sort Sortierung wird aufgerufen
 		Vergleich.Bubble_Sort(B,n-1); // Bubble_Sort Sortierung wird aufgerufen
 
 		//Ausgabe des sortierten Array A mit Quicksort
+		System.out.println("Sortiert mit Quicksort:");
 		for (int i=0;i<n;i++)
 		{
 			System.out.print(A[i] + " ");
 		}
-		
-		System.out.println(); //Zeilenumbruch
+		System.out.println(); // Zeilenumbruch
 
 		//Ausgabe des sortierten Array B mit Bubblesort
+		System.out.println("Sortiert mit Bubblesort");
 		for (int i=0;i<n;i++)
 		{
 			System.out.print(B[i] + " ");
 		}
 
 		System.out.println();
-		System.out.println("Vergleiche: " + q_vergleich + " und Vertauscht: " + q_tauschen);	//Ausgabe der Zähler
-		System.out.println("Vergleiche: " + b_vergleich + " und Vertauscht: " + b_tauschen);	//Ausgabe der Zähler
+		System.out.println("Quicksort: Vergleiche: " + q_vergleich + " und Vertauscht: " + q_tauschen);	//Ausgabe der Zähler
+		System.out.println("Bubblesort: Vergleiche: " + b_vergleich + " und Vertauscht: " + b_tauschen);	//Ausgabe der Zähler
 	}
 
 	public static void vertausche(int[] A, int a, int b) //Definition Vertauschfunktion
@@ -107,21 +120,23 @@ public class Vergleich
 
 	public static void Bubble_Sort(int[] B, int n)
 	{
-		boolean getauscht = false;
-
+	
+		boolean getauscht = false; //Element zum testen, ob getauscht wurde
+		int c_durchgang = 0; //Zähler für Durchgang
 		do
 		{
-			getauscht = false;
-			for (int i=0; i<n; i++)
+			getauscht = false; //wird wieder auf falsch gesetzt
+			for (int i=0; i<(n-c_durchgang); i++)
 			{
 				b_vergleich++;
 				if (B[i]>B[i+1])
 				{
 					vertausche(B,i,i+1);
 					b_tauschen++;
-					getauscht = true;
+					getauscht = true; //wenn getauscht wurde, startet die do schleife erneut von vorne
 				}
 			}
+			c_durchgang++; //Durchgangszähler erhöhen
 		} while (getauscht);
 	}
 }
