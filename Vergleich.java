@@ -111,9 +111,9 @@ public class Vergleich
 
 		do
 		{
+			getauscht = false;
 			for (int i=0; i<n; i++)
 			{
-				getauscht = false;
 				b_vergleich++;
 				if (B[i]>B[i+1])
 				{
