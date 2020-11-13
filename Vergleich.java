@@ -10,7 +10,7 @@ public class Vergleich
 	public static void main(String[] args)
 	{
 		//Definiere Array mit n Stellen
-		int n = 10;
+		int n = 10; //auf 5 stellen für festes Array mit 5 Stellen
 		int[] A  = new int[n];
 
 		//für ein n langes Array mit Zufallszahlen 0-100
